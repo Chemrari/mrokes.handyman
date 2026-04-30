@@ -1228,7 +1228,7 @@
               <i class="fa-solid fa-clipboard-list"></i>
             </div>
           </div>
-          <form action="https://formspree.io/f/xojyzbbv" method="POST" class="mt-8 space-y-5">
+          <form id="contact-form" action="https://formspree.io/f/xojyzbbv" method="POST" class="mt-8 space-y-5">
             <div>
               <label for="name"
                 class="mb-2 block text-sm font-bold uppercase tracking-[0.2em] text-white/70">Name</label>
@@ -1252,6 +1252,7 @@
               class="inline-flex w-full items-center justify-center rounded-full bg-workred px-6 py-4 text-base font-bold uppercase tracking-[0.08em] text-white transition hover:-translate-y-1 hover:bg-[#a74027]">
               <i class="fa-solid fa-paper-plane mr-2"></i>Send Booking Request
             </button>
+            <p id="form-status" class="hidden mt-4 text-center text-sm font-bold tracking-wide text-white"></p>
           </form>
           <p class="mt-4 text-sm leading-6 text-white/60">
             Your information is secure and will only be used to coordinate your repair request.
@@ -1477,6 +1478,103 @@
         icon.className = 'fa-solid fa-minus text-workred';
       }
     }
+    // ===== SELECT SERVICE AND SCROLL TO CONTACT =====
+    function initServiceClicks() {
+      // Find all service cards in both grids
+      var serviceCards = document.querySelectorAll('#services .grid > div.group');
+
+      serviceCards.forEach(function (card) {
+        // Add pointer cursor
+        card.classList.add('cursor-pointer');
+
+        // Add click listener
+        card.addEventListener('click', function () {
+          // Extract service name from the span
+          var nameSpan = card.querySelector('span.text-sm.font-medium');
+          var serviceName = nameSpan ? nameSpan.textContent.trim() : 'a service';
+
+          var msgBox = document.getElementById('message');
+          if (msgBox) {
+            msgBox.value = "Hi! I need help with " + serviceName + ". When are you available?";
+
+            // Scroll down
+            var contactSection = document.getElementById('contact');
+            if (contactSection) {
+              contactSection.scrollIntoView({ behavior: 'smooth' });
+
+              // Focus the textarea so the user sees they can type
+              setTimeout(function () {
+                msgBox.focus();
+                // Put cursor at the end
+                msgBox.selectionStart = msgBox.selectionEnd = msgBox.value.length;
+              }, 600);
+            }
+          }
+        });
+      });
+    }
+
+    // ===== AJAX FORM SUBMISSION =====
+    function initContactForm() {
+      var form = document.getElementById("contact-form");
+      var status = document.getElementById("form-status");
+
+      if (form) {
+        form.addEventListener("submit", function(e) {
+          e.preventDefault();
+          
+          var data = new FormData(form);
+          var submitBtn = form.querySelector('button[type="submit"]');
+          var originalBtnText = submitBtn.innerHTML;
+          
+          // Disable button and show loading state
+          submitBtn.disabled = true;
+          submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin mr-2"></i>Sending...';
+          submitBtn.classList.add('opacity-70', 'cursor-not-allowed');
+          status.classList.add('hidden');
+
+          fetch(form.action, {
+            method: form.method,
+            body: data,
+            headers: {
+              'Accept': 'application/json'
+            }
+          }).then(response => {
+            if (response.ok) {
+              status.textContent = "Thanks! We received your message and will reply shortly.";
+              status.classList.remove('hidden', 'text-workred');
+              status.classList.add('text-green-400');
+              form.reset();
+            } else {
+              response.json().then(data => {
+                if (Object.hasOwn(data, 'errors')) {
+                  status.textContent = data["errors"].map(error => error["message"]).join(", ");
+                } else {
+                  status.textContent = "Oops! There was a problem submitting your form.";
+                }
+                status.classList.remove('hidden', 'text-green-400');
+                status.classList.add('text-workred');
+              });
+            }
+          }).catch(error => {
+            status.textContent = "Oops! There was a problem submitting your form.";
+            status.classList.remove('hidden', 'text-green-400');
+            status.classList.add('text-workred');
+          }).finally(() => {
+            // Restore button
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = originalBtnText;
+            submitBtn.classList.remove('opacity-70', 'cursor-not-allowed');
+          });
+        });
+      }
+    }
+
+    // Call it when DOM is ready
+    document.addEventListener('DOMContentLoaded', function () {
+      initServiceClicks();
+      initContactForm();
+    });
   </script>
 </body>
 

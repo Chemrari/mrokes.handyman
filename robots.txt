@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://chemrari.github.io/mrokes.handyman/sitemap.xml

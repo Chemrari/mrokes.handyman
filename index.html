@@ -16,6 +16,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:image" content="images/job_car.jpeg" />
   <link rel="icon" href="images/logo.jpg" type="image/jpeg" />
+  <link rel="canonical" href="https://chemrari.github.io/mrokes.handyman/" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
@@ -93,8 +94,39 @@
 
     .nav-dock {
       position: sticky;
-      top: 0.75rem;
+      top: 0.5rem;
       z-index: 45;
+    }
+
+    /* hamburger icon animation */
+    #nav-toggle[aria-expanded="true"] .icon-bars {
+      display: none;
+    }
+
+    #nav-toggle[aria-expanded="false"] .icon-x {
+      display: none;
+    }
+
+    /* mobile nav slide */
+    #mobile-nav {
+      display: none;
+      animation: navSlide 0.22s ease;
+    }
+
+    #mobile-nav.open {
+      display: flex;
+    }
+
+    @keyframes navSlide {
+      from {
+        opacity: 0;
+        transform: translateY(-6px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     .nav-panel {
@@ -238,7 +270,7 @@
       #why-us,
       #results,
       #contact {
-        scroll-margin-top: 8.5rem;
+        scroll-margin-top: 7rem;
       }
     }
 
@@ -288,6 +320,7 @@
     "name": "Mrokes Handyman",
     "description": "Handyman services in Houston, Texas including home repair, painting, patchwork, plumbing, electrical, and property maintenance.",
     "telephone": ["+1-713-702-8944", "+1-201-925-6012"],
+    "email": "Mrokes.handyman@gmail.com",
     "areaServed": { "@type": "City", "name": "Houston" },
     "address": {
       "@type": "PostalAddress",
@@ -295,7 +328,7 @@
       "addressRegion": "TX",
       "addressCountry": "US"
     },
-    "serviceType": ["Handyman services","Home repair","Minor plumbing","Minor electrical","Property maintenance"]
+    "serviceType": ["Handyman services","Home repair","Landscaping","Sprinklers","Painting","Electrical","Lighting","Power Washing","Hauling","Cleaning","Bath & Kitchen","A/C and Heating","Blinds","Curtains","Assembly Services","Computer/Tech Service","Baseboards/Trim/Moulding","Smart Home"]
   }
   </script>
 </head>
@@ -321,32 +354,47 @@
   <!-- ===== TOP STRIPE ===== -->
   <header id="top" class="relative z-10">
     <div
-      class="top-stripe px-4 py-3 text-[10px] font-semibold uppercase tracking-[0.12em] text-white sm:px-6 sm:text-xs sm:tracking-[0.28em]">
-      <div class="mx-auto flex max-w-7xl flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
-        <p>Houston handyman service for homes, rentals, and maintenance punch lists.</p>
-        <p>Fast phone response | Clear scheduling | Professional finish</p>
+      class="top-stripe px-3 py-2.5 text-center text-[9px] font-semibold uppercase leading-snug tracking-[0.1em] text-white sm:px-6 sm:py-3 sm:text-left sm:text-xs sm:tracking-[0.28em]">
+      <div class="mx-auto flex max-w-7xl flex-col items-center gap-1.5 sm:flex-row sm:justify-between">
+        <p class="max-w-[300px] text-white/95 sm:max-w-none">Houston handyman service for homes, rentals, and
+          maintenance punch lists.</p>
+        <div class="flex flex-wrap justify-center gap-x-1.5 gap-y-0.5 text-white/80">
+          <span>Fast phone response</span>
+          <span class="text-brass/70">|</span>
+          <span>Clear scheduling</span>
+          <span class="text-brass/70">|</span>
+          <span>Professional finish</span>
+        </div>
       </div>
     </div>
   </header>
 
   <!-- ===== NAV ===== -->
-  <div id="nav-dock" class="nav-dock px-3 py-3 sm:px-6 sm:py-5">
+  <div id="nav-dock" class="nav-dock px-3 py-2 sm:px-6 sm:py-4">
     <div
-      class="nav-panel mx-auto flex max-w-7xl flex-col gap-3 rounded-[1.4rem] border border-midnight/10 bg-white/90 px-3 py-3 shadow-panel backdrop-blur sm:gap-4 sm:rounded-[2rem] sm:px-6 sm:py-4 lg:flex-row lg:items-center lg:justify-between">
+      class="nav-panel mx-auto flex max-w-7xl flex-col rounded-[1.4rem] border border-midnight/10 bg-white/90 px-3 py-2.5 shadow-panel backdrop-blur sm:rounded-[2rem] sm:px-6 sm:py-3.5 lg:flex-row lg:items-center lg:justify-between">
+      <!-- Logo row -->
       <div class="flex items-center justify-between">
         <a href="#top" class="flex items-center gap-2.5 sm:gap-3">
           <img loading="lazy" src="images/logo.jpg" alt="Mrokes Handyman logo"
-            class="h-12 w-12 shrink-0 rounded-[1rem] object-cover sm:h-16 sm:w-16 sm:rounded-[1.2rem]" />
+            class="h-10 w-10 shrink-0 rounded-[0.9rem] object-cover sm:h-14 sm:w-14 sm:rounded-[1.1rem]" />
           <div>
-            <p class="font-display text-[1.2rem] font-semibold uppercase leading-none text-midnight sm:text-3xl">Mrokes
+            <p class="font-display text-[1.1rem] font-semibold uppercase leading-none text-midnight sm:text-2xl">Mrokes
               Handyman</p>
-            <p class="mt-0.5 text-[11px] font-medium leading-4 text-asphalt/75 sm:mt-1 sm:text-[13px] sm:leading-5">
-              Dependable repair help.</p>
+            <p class="mt-0.5 text-[10px] font-medium leading-4 text-asphalt/75 sm:mt-1 sm:text-[12px]">Dependable repair
+              help.</p>
           </div>
         </a>
+        <!-- Hamburger — only visible on mobile/sm -->
+        <button id="nav-toggle" aria-expanded="false" aria-label="Toggle navigation"
+          class="flex h-9 w-9 items-center justify-center rounded-[0.8rem] border border-midnight/10 bg-canvas/80 text-midnight transition hover:bg-canvas lg:hidden">
+          <i class="fa-solid fa-bars icon-bars text-sm"></i>
+          <i class="fa-solid fa-xmark icon-x text-sm"></i>
+        </button>
       </div>
-      <nav
-        class="no-scrollbar flex w-full gap-2 overflow-x-auto pb-1 text-[13px] font-semibold text-asphalt sm:flex-wrap sm:items-center sm:pb-0 sm:text-sm lg:w-auto">
+      <!-- Nav links — hidden on mobile until hamburger clicked; always visible sm+ -->
+      <nav id="mobile-nav"
+        class="no-scrollbar mt-2 w-full flex-col gap-2 pb-1 text-[13px] font-semibold text-asphalt sm:!flex sm:mt-0 sm:flex-row sm:flex-wrap sm:items-center sm:pb-0 sm:text-sm lg:w-auto">
         <a href="#services" data-nav-link
           class="nav-link whitespace-nowrap rounded-full border border-midnight/5 bg-canvas/60 px-4 py-2 text-center transition hover:bg-canvas hover:text-workred sm:border-transparent sm:bg-transparent sm:py-2.5">Services</a>
         <a href="#why-us" data-nav-link
@@ -377,7 +425,7 @@
 
           <h1
             class="reveal delay-1 mt-5 max-w-4xl font-display text-[2.35rem] font-semibold uppercase leading-[0.95] text-midnight sm:text-[4.6rem] lg:text-[5.4rem]">
-            Best Handyman Services in Houston, TX — Fast &amp; Reliable Repairs
+            Handyman Services in Houston, TX — Fast &amp; Reliable Repairs
           </h1>
 
           <p class="reveal delay-2 mt-5 max-w-2xl text-base leading-7 text-asphalt/80 sm:text-xl sm:leading-8">
@@ -487,7 +535,7 @@
           </p>
         </div>
 
-        <div
+        <div id="services-carousel"
           class="no-scrollbar -mx-4 mt-8 flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-8 sm:-mx-6 sm:px-6 md:mx-0 md:mt-10 md:grid md:grid-cols-2 md:gap-6 md:overflow-visible md:px-0 md:pb-0 xl:grid-cols-4">
 
           <article
@@ -578,6 +626,298 @@
             </div>
           </article>
 
+        </div>
+
+        <!-- Carousel dots — mobile only -->
+        <div class="mt-5 flex items-center justify-center gap-3 md:hidden" id="carousel-dots" aria-hidden="true">
+          <span class="carousel-dot block h-2.5 w-2.5 rounded-full bg-workred transition-all duration-300"></span>
+          <span class="carousel-dot block h-2 w-2 rounded-full bg-midnight/20 transition-all duration-300"></span>
+          <span class="carousel-dot block h-2 w-2 rounded-full bg-midnight/20 transition-all duration-300"></span>
+          <span class="carousel-dot block h-2 w-2 rounded-full bg-midnight/20 transition-all duration-300"></span>
+        </div>
+        <p class="mt-3 text-center text-[11px] font-semibold uppercase tracking-[0.2em] text-asphalt/50 md:hidden">
+          <i class="fa-solid fa-arrow-left-long mr-1"></i>Swipe to see all services<i
+            class="fa-solid fa-arrow-right-long ml-1"></i>
+        </p>
+
+        <!-- ===== FULL SERVICE LIST ===== -->
+        <div class="reveal mt-14">
+          <div class="dark-card rounded-[2rem] p-5 sm:rounded-[2.5rem] sm:p-8">
+            <div class="mb-6 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+              <div>
+                <p class="text-xs font-bold uppercase tracking-[0.3em] text-brass">Complete List</p>
+                <h3 class="mt-2 font-display text-2xl font-semibold uppercase leading-tight text-white sm:text-3xl">All
+                  Services We Offer</h3>
+              </div>
+              <a href="#contact"
+                class="inline-flex w-full items-center justify-center rounded-full bg-workred px-5 py-3 text-sm font-bold uppercase tracking-[0.08em] text-white transition hover:-translate-y-0.5 hover:bg-[#a74027] sm:w-auto">
+                Book a Service
+              </a>
+            </div>
+            <div class="grid grid-cols-2 gap-2.5 sm:gap-3 md:grid-cols-3 xl:grid-cols-4">
+
+              <div
+                class="group flex min-h-[3.5rem] items-center justify-between gap-3 rounded-2xl border border-white/5 bg-white/[0.03] px-3 py-3 transition-all duration-300 hover:-translate-y-0.5 hover:border-workred/40 hover:bg-white/[0.08] hover:shadow-[0_4px_20px_rgba(190,75,47,0.15)] sm:px-4">
+                <div class="flex items-center gap-3">
+                  <span
+                    class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-white/[0.05] text-white/70 transition-colors duration-300 group-hover:bg-workred group-hover:text-white">
+                    <i class="fa-solid fa-screwdriver-wrench text-sm"></i>
+                  </span>
+                  <span
+                    class="text-sm font-medium leading-tight text-white/90 transition-colors duration-300 group-hover:text-white sm:text-base">Handyman</span>
+                </div>
+                <i
+                  class="fa-solid fa-chevron-right text-[10px] text-white/20 transition-all duration-300 group-hover:translate-x-1 group-hover:text-workred"></i>
+              </div>
+
+              <div
+                class="group flex min-h-[3.5rem] items-center justify-between gap-3 rounded-2xl border border-white/5 bg-white/[0.03] px-3 py-3 transition-all duration-300 hover:-translate-y-0.5 hover:border-workred/40 hover:bg-white/[0.08] hover:shadow-[0_4px_20px_rgba(190,75,47,0.15)] sm:px-4">
+                <div class="flex items-center gap-3">
+                  <span
+                    class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-white/[0.05] text-white/70 transition-colors duration-300 group-hover:bg-workred group-hover:text-white">
+                    <i class="fa-solid fa-seedling text-sm"></i>
+                  </span>
+                  <span
+                    class="text-sm font-medium leading-tight text-white/90 transition-colors duration-300 group-hover:text-white sm:text-base">Landscaping</span>
+                </div>
+                <i
+                  class="fa-solid fa-chevron-right text-[10px] text-white/20 transition-all duration-300 group-hover:translate-x-1 group-hover:text-workred"></i>
+              </div>
+
+              <div
+                class="group flex min-h-[3.5rem] items-center justify-between gap-3 rounded-2xl border border-white/5 bg-white/[0.03] px-3 py-3 transition-all duration-300 hover:-translate-y-0.5 hover:border-workred/40 hover:bg-white/[0.08] hover:shadow-[0_4px_20px_rgba(190,75,47,0.15)] sm:px-4">
+                <div class="flex items-center gap-3">
+                  <span
+                    class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-white/[0.05] text-white/70 transition-colors duration-300 group-hover:bg-workred group-hover:text-white">
+                    <i class="fa-solid fa-droplet text-sm"></i>
+                  </span>
+                  <span
+                    class="text-sm font-medium leading-tight text-white/90 transition-colors duration-300 group-hover:text-white sm:text-base">Sprinklers
+                    / Irrigation</span>
+                </div>
+                <i
+                  class="fa-solid fa-chevron-right text-[10px] text-white/20 transition-all duration-300 group-hover:translate-x-1 group-hover:text-workred"></i>
+              </div>
+
+              <div
+                class="group flex min-h-[3.5rem] items-center justify-between gap-3 rounded-2xl border border-white/5 bg-white/[0.03] px-3 py-3 transition-all duration-300 hover:-translate-y-0.5 hover:border-workred/40 hover:bg-white/[0.08] hover:shadow-[0_4px_20px_rgba(190,75,47,0.15)] sm:px-4">
+                <div class="flex items-center gap-3">
+                  <span
+                    class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-white/[0.05] text-white/70 transition-colors duration-300 group-hover:bg-workred group-hover:text-white">
+                    <i class="fa-solid fa-paint-roller text-sm"></i>
+                  </span>
+                  <span
+                    class="text-sm font-medium leading-tight text-white/90 transition-colors duration-300 group-hover:text-white sm:text-base">Painting</span>
+                </div>
+                <i
+                  class="fa-solid fa-chevron-right text-[10px] text-white/20 transition-all duration-300 group-hover:translate-x-1 group-hover:text-workred"></i>
+              </div>
+
+              <div
+                class="group flex min-h-[3.5rem] items-center justify-between gap-3 rounded-2xl border border-white/5 bg-white/[0.03] px-3 py-3 transition-all duration-300 hover:-translate-y-0.5 hover:border-workred/40 hover:bg-white/[0.08] hover:shadow-[0_4px_20px_rgba(190,75,47,0.15)] sm:px-4">
+                <div class="flex items-center gap-3">
+                  <span
+                    class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-white/[0.05] text-white/70 transition-colors duration-300 group-hover:bg-workred group-hover:text-white">
+                    <i class="fa-solid fa-bolt text-sm"></i>
+                  </span>
+                  <span
+                    class="text-sm font-medium leading-tight text-white/90 transition-colors duration-300 group-hover:text-white sm:text-base">Electrical</span>
+                </div>
+                <i
+                  class="fa-solid fa-chevron-right text-[10px] text-white/20 transition-all duration-300 group-hover:translate-x-1 group-hover:text-workred"></i>
+              </div>
+
+              <div
+                class="group flex min-h-[3.5rem] items-center justify-between gap-3 rounded-2xl border border-white/5 bg-white/[0.03] px-3 py-3 transition-all duration-300 hover:-translate-y-0.5 hover:border-workred/40 hover:bg-white/[0.08] hover:shadow-[0_4px_20px_rgba(190,75,47,0.15)] sm:px-4">
+                <div class="flex items-center gap-3">
+                  <span
+                    class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-white/[0.05] text-white/70 transition-colors duration-300 group-hover:bg-workred group-hover:text-white">
+                    <i class="fa-solid fa-lightbulb text-sm"></i>
+                  </span>
+                  <span
+                    class="text-sm font-medium leading-tight text-white/90 transition-colors duration-300 group-hover:text-white sm:text-base">Lighting</span>
+                </div>
+                <i
+                  class="fa-solid fa-chevron-right text-[10px] text-white/20 transition-all duration-300 group-hover:translate-x-1 group-hover:text-workred"></i>
+              </div>
+
+              <div
+                class="group flex min-h-[3.5rem] items-center justify-between gap-3 rounded-2xl border border-white/5 bg-white/[0.03] px-3 py-3 transition-all duration-300 hover:-translate-y-0.5 hover:border-workred/40 hover:bg-white/[0.08] hover:shadow-[0_4px_20px_rgba(190,75,47,0.15)] sm:px-4">
+                <div class="flex items-center gap-3">
+                  <span
+                    class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-white/[0.05] text-white/70 transition-colors duration-300 group-hover:bg-workred group-hover:text-white">
+                    <i class="fa-solid fa-burst text-sm"></i>
+                  </span>
+                  <span
+                    class="text-sm font-medium leading-tight text-white/90 transition-colors duration-300 group-hover:text-white sm:text-base">Power
+                    Washing</span>
+                </div>
+                <i
+                  class="fa-solid fa-chevron-right text-[10px] text-white/20 transition-all duration-300 group-hover:translate-x-1 group-hover:text-workred"></i>
+              </div>
+
+              <!-- item 8: Hauling -->
+              <div
+                class="group flex min-h-[3.5rem] items-center justify-between gap-3 rounded-2xl border border-white/5 bg-white/[0.03] px-3 py-3 transition-all duration-300 hover:-translate-y-0.5 hover:border-workred/40 hover:bg-white/[0.08] hover:shadow-[0_4px_20px_rgba(190,75,47,0.15)] sm:px-4">
+                <div class="flex items-center gap-3">
+                  <span
+                    class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-white/[0.05] text-white/70 transition-colors duration-300 group-hover:bg-workred group-hover:text-white">
+                    <i class="fa-solid fa-truck text-sm"></i>
+                  </span>
+                  <span
+                    class="text-sm font-medium leading-tight text-white/90 transition-colors duration-300 group-hover:text-white sm:text-base">Hauling</span>
+                </div>
+                <i
+                  class="fa-solid fa-chevron-right text-[10px] text-white/20 transition-all duration-300 group-hover:translate-x-1 group-hover:text-workred"></i>
+              </div>
+
+            </div>
+
+            <!-- 9 extra services — hidden until toggled -->
+            <div id="extra-services"
+              class="hidden mt-2.5 grid grid-cols-2 gap-2.5 sm:gap-3 md:grid-cols-3 xl:grid-cols-4">
+
+              <div
+                class="group flex min-h-[3.5rem] items-center justify-between gap-3 rounded-2xl border border-white/5 bg-white/[0.03] px-3 py-3 transition-all duration-300 hover:-translate-y-0.5 hover:border-workred/40 hover:bg-white/[0.08] hover:shadow-[0_4px_20px_rgba(190,75,47,0.15)] sm:px-4">
+                <div class="flex items-center gap-3">
+                  <span
+                    class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-white/[0.05] text-white/70 transition-colors duration-300 group-hover:bg-workred group-hover:text-white">
+                    <i class="fa-solid fa-broom text-sm"></i>
+                  </span>
+                  <span
+                    class="text-sm font-medium leading-tight text-white/90 transition-colors duration-300 group-hover:text-white sm:text-base">Cleaning</span>
+                </div>
+                <i
+                  class="fa-solid fa-chevron-right text-[10px] text-white/20 transition-all duration-300 group-hover:translate-x-1 group-hover:text-workred"></i>
+              </div>
+
+              <div
+                class="group flex min-h-[3.5rem] items-center justify-between gap-3 rounded-2xl border border-white/5 bg-white/[0.03] px-3 py-3 transition-all duration-300 hover:-translate-y-0.5 hover:border-workred/40 hover:bg-white/[0.08] hover:shadow-[0_4px_20px_rgba(190,75,47,0.15)] sm:px-4">
+                <div class="flex items-center gap-3">
+                  <span
+                    class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-white/[0.05] text-white/70 transition-colors duration-300 group-hover:bg-workred group-hover:text-white">
+                    <i class="fa-solid fa-sink text-sm"></i>
+                  </span>
+                  <span
+                    class="text-sm font-medium leading-tight text-white/90 transition-colors duration-300 group-hover:text-white sm:text-base">Bath
+                    / Kitchen</span>
+                </div>
+                <i
+                  class="fa-solid fa-chevron-right text-[10px] text-white/20 transition-all duration-300 group-hover:translate-x-1 group-hover:text-workred"></i>
+              </div>
+
+              <div
+                class="group flex min-h-[3.5rem] items-center justify-between gap-3 rounded-2xl border border-white/5 bg-white/[0.03] px-3 py-3 transition-all duration-300 hover:-translate-y-0.5 hover:border-workred/40 hover:bg-white/[0.08] hover:shadow-[0_4px_20px_rgba(190,75,47,0.15)] sm:px-4">
+                <div class="flex items-center gap-3">
+                  <span
+                    class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-white/[0.05] text-white/70 transition-colors duration-300 group-hover:bg-workred group-hover:text-white">
+                    <i class="fa-solid fa-temperature-half text-sm"></i>
+                  </span>
+                  <span
+                    class="text-sm font-medium leading-tight text-white/90 transition-colors duration-300 group-hover:text-white sm:text-base">A/C
+                    and Heating</span>
+                </div>
+                <i
+                  class="fa-solid fa-chevron-right text-[10px] text-white/20 transition-all duration-300 group-hover:translate-x-1 group-hover:text-workred"></i>
+              </div>
+
+              <div
+                class="group flex min-h-[3.5rem] items-center justify-between gap-3 rounded-2xl border border-white/5 bg-white/[0.03] px-3 py-3 transition-all duration-300 hover:-translate-y-0.5 hover:border-workred/40 hover:bg-white/[0.08] hover:shadow-[0_4px_20px_rgba(190,75,47,0.15)] sm:px-4">
+                <div class="flex items-center gap-3">
+                  <span
+                    class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-white/[0.05] text-white/70 transition-colors duration-300 group-hover:bg-workred group-hover:text-white">
+                    <i class="fa-solid fa-window-restore text-sm"></i>
+                  </span>
+                  <span
+                    class="text-sm font-medium leading-tight text-white/90 transition-colors duration-300 group-hover:text-white sm:text-base">Blinds</span>
+                </div>
+                <i
+                  class="fa-solid fa-chevron-right text-[10px] text-white/20 transition-all duration-300 group-hover:translate-x-1 group-hover:text-workred"></i>
+              </div>
+
+              <div
+                class="group flex min-h-[3.5rem] items-center justify-between gap-3 rounded-2xl border border-white/5 bg-white/[0.03] px-3 py-3 transition-all duration-300 hover:-translate-y-0.5 hover:border-workred/40 hover:bg-white/[0.08] hover:shadow-[0_4px_20px_rgba(190,75,47,0.15)] sm:px-4">
+                <div class="flex items-center gap-3">
+                  <span
+                    class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-white/[0.05] text-white/70 transition-colors duration-300 group-hover:bg-workred group-hover:text-white">
+                    <i class="fa-solid fa-ruler-combined text-sm"></i>
+                  </span>
+                  <span
+                    class="text-sm font-medium leading-tight text-white/90 transition-colors duration-300 group-hover:text-white sm:text-base">Curtains</span>
+                </div>
+                <i
+                  class="fa-solid fa-chevron-right text-[10px] text-white/20 transition-all duration-300 group-hover:translate-x-1 group-hover:text-workred"></i>
+              </div>
+
+              <div
+                class="group flex min-h-[3.5rem] items-center justify-between gap-3 rounded-2xl border border-white/5 bg-white/[0.03] px-3 py-3 transition-all duration-300 hover:-translate-y-0.5 hover:border-workred/40 hover:bg-white/[0.08] hover:shadow-[0_4px_20px_rgba(190,75,47,0.15)] sm:px-4">
+                <div class="flex items-center gap-3">
+                  <span
+                    class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-white/[0.05] text-white/70 transition-colors duration-300 group-hover:bg-workred group-hover:text-white">
+                    <i class="fa-solid fa-box-open text-sm"></i>
+                  </span>
+                  <span
+                    class="text-sm font-medium leading-tight text-white/90 transition-colors duration-300 group-hover:text-white sm:text-base">Assembly
+                    Services</span>
+                </div>
+                <i
+                  class="fa-solid fa-chevron-right text-[10px] text-white/20 transition-all duration-300 group-hover:translate-x-1 group-hover:text-workred"></i>
+              </div>
+
+              <div
+                class="group flex min-h-[3.5rem] items-center justify-between gap-3 rounded-2xl border border-white/5 bg-white/[0.03] px-3 py-3 transition-all duration-300 hover:-translate-y-0.5 hover:border-workred/40 hover:bg-white/[0.08] hover:shadow-[0_4px_20px_rgba(190,75,47,0.15)] sm:px-4">
+                <div class="flex items-center gap-3">
+                  <span
+                    class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-white/[0.05] text-white/70 transition-colors duration-300 group-hover:bg-workred group-hover:text-white">
+                    <i class="fa-solid fa-laptop text-sm"></i>
+                  </span>
+                  <span
+                    class="text-sm font-medium leading-tight text-white/90 transition-colors duration-300 group-hover:text-white sm:text-base">Computer
+                    / Tech</span>
+                </div>
+                <i
+                  class="fa-solid fa-chevron-right text-[10px] text-white/20 transition-all duration-300 group-hover:translate-x-1 group-hover:text-workred"></i>
+              </div>
+
+              <div
+                class="group flex min-h-[3.5rem] items-center justify-between gap-3 rounded-2xl border border-white/5 bg-white/[0.03] px-3 py-3 transition-all duration-300 hover:-translate-y-0.5 hover:border-workred/40 hover:bg-white/[0.08] hover:shadow-[0_4px_20px_rgba(190,75,47,0.15)] sm:px-4">
+                <div class="flex items-center gap-3">
+                  <span
+                    class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-white/[0.05] text-white/70 transition-colors duration-300 group-hover:bg-workred group-hover:text-white">
+                    <i class="fa-solid fa-border-none text-sm"></i>
+                  </span>
+                  <span
+                    class="text-sm font-medium leading-tight text-white/90 transition-colors duration-300 group-hover:text-white sm:text-base">Baseboards
+                    / Trim</span>
+                </div>
+                <i
+                  class="fa-solid fa-chevron-right text-[10px] text-white/20 transition-all duration-300 group-hover:translate-x-1 group-hover:text-workred"></i>
+              </div>
+
+              <div
+                class="group flex min-h-[3.5rem] items-center justify-between gap-3 rounded-2xl border border-white/5 bg-white/[0.03] px-3 py-3 transition-all duration-300 hover:-translate-y-0.5 hover:border-workred/40 hover:bg-white/[0.08] hover:shadow-[0_4px_20px_rgba(190,75,47,0.15)] sm:px-4">
+                <div class="flex items-center gap-3">
+                  <span
+                    class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-white/[0.05] text-white/70 transition-colors duration-300 group-hover:bg-workred group-hover:text-white">
+                    <i class="fa-solid fa-house-signal text-sm"></i>
+                  </span>
+                  <span
+                    class="text-sm font-medium leading-tight text-white/90 transition-colors duration-300 group-hover:text-white sm:text-base">Smart
+                    Home</span>
+                </div>
+                <i
+                  class="fa-solid fa-chevron-right text-[10px] text-white/20 transition-all duration-300 group-hover:translate-x-1 group-hover:text-workred"></i>
+              </div>
+
+            </div>
+
+            <!-- Toggle button -->
+            <button id="services-toggle-btn" onclick="toggleServices()"
+              class="mt-4 flex w-full items-center justify-center gap-2 rounded-full border border-white/20 bg-white/[0.05] py-3 text-sm font-bold uppercase tracking-[0.1em] text-white transition hover:bg-white/[0.12]">
+              <i id="services-toggle-icon" class="fa-solid fa-plus text-workred"></i>
+              <span id="services-toggle-label">See 9 More Services</span>
+            </button>
+          </div>
         </div>
       </div>
     </section>
@@ -690,11 +1030,11 @@
               </div>
             </div>
             <div class="p-6">
-              <p class="text-xs font-bold uppercase tracking-[0.24em] text-pine">Rental Upkeep</p>
+              <p class="text-xs font-bold uppercase tracking-[0.24em] text-pine">RENTAL UPKEEP</p>
               <h3 class="mt-3 font-display text-2xl font-semibold uppercase leading-tight text-midnight sm:text-3xl">
-                Property Turnovers Made Easy</h3>
-              <p class="mt-3 text-base leading-7 text-asphalt/80 sm:text-lg">We take tired units and get them back in
-                market-ready shape with fresh patches, paint, and fixture updates.</p>
+                Kitchen Sink Replacement</h3>
+              <p class="mt-3 text-base leading-7 text-asphalt/80 sm:text-lg">Old stained sink swapped out for a clean
+                stainless steel fixture — same day, no mess left behind..</p>
             </div>
           </article>
 
@@ -702,28 +1042,26 @@
           <article class="overflow-hidden rounded-[2.5rem] border border-midnight/10 bg-white shadow-panel">
             <div class="grid grid-cols-2 gap-1 p-2">
               <div class="relative overflow-hidden rounded-l-[1.8rem]">
-                <img loading="lazy"
-                  src="images/before2.jpeg"
-                  alt="Damaged area" class="aspect-[4/5] w-full object-cover sm:aspect-square" />
+                <img loading="lazy" src="images/before2.jpeg" alt="Damaged area"
+                  class="aspect-[4/5] w-full object-cover sm:aspect-square" />
                 <div
                   class="absolute bottom-3 left-3 rounded-full bg-black/60 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-white backdrop-blur">
                   Before</div>
               </div>
               <div class="relative overflow-hidden rounded-r-[1.8rem]">
-                <img loading="lazy"
-                  src="images/after2.jpeg"
-                  alt="Clean finish" class="aspect-[4/5] w-full object-cover sm:aspect-square" />
+                <img loading="lazy" src="images/after2.jpeg" alt="Clean finish"
+                  class="aspect-[4/5] w-full object-cover sm:aspect-square" />
                 <div
                   class="absolute bottom-3 right-3 rounded-full bg-workred px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-white backdrop-blur">
                   After</div>
               </div>
             </div>
             <div class="p-6">
-              <p class="text-xs font-bold uppercase tracking-[0.24em] text-pine">Home Repairs</p>
+              <p class="text-xs font-bold uppercase tracking-[0.24em] text-pine">HOME REPAIRS</p>
               <h3 class="mt-3 font-display text-2xl font-semibold uppercase leading-tight text-midnight sm:text-3xl">
-                Clean & Professional Finish</h3>
-              <p class="mt-3 text-base leading-7 text-asphalt/80 sm:text-lg">No more loose fixtures or wall damage. We
-                ensure every job looks like the problem was never there.</p>
+                Bathroom Damage? We Handle It All.</h3>
+              <p class="mt-3 text-base leading-7 text-asphalt/80 sm:text-lg">Water damage cleaned, wall restored,
+                and a brand new vanity installed. Looks like it never happened.</p>
             </div>
           </article>
 
@@ -844,6 +1182,16 @@
                 <p class="mt-1 text-xl font-semibold text-midnight sm:text-2xl">+1 201-925-6012</p>
               </div>
             </a>
+            <a href="mailto:Mrokes.handyman@gmail.com"
+              class="panel-lift flex items-center gap-4 rounded-[1.5rem] border border-midnight/10 bg-white p-4 sm:rounded-[1.7rem] sm:p-5">
+              <div class="flex h-14 w-14 items-center justify-center rounded-[1.2rem] bg-brass text-midnight">
+                <i class="fa-solid fa-envelope"></i>
+              </div>
+              <div>
+                <p class="text-xs font-bold uppercase tracking-[0.25em] text-pine">Email</p>
+                <p class="mt-1 text-sm font-semibold text-midnight sm:text-base">Mrokes.handyman@gmail.com</p>
+              </div>
+            </a>
           </div>
           <div class="mt-8 overflow-hidden rounded-[1.7rem] border border-midnight/10 shadow-panel sm:rounded-[2rem]">
             <iframe title="Houston, Texas map" src="https://www.google.com/maps?q=Houston,Texas&output=embed"
@@ -957,6 +1305,18 @@
                 </span>
               </span>
             </a>
+            <a href="mailto:Mrokes.handyman@gmail.com"
+              class="flex items-center justify-between rounded-[1.3rem] border border-midnight/10 bg-canvas px-4 py-3 transition hover:border-workred hover:bg-white">
+              <span class="flex items-center gap-3">
+                <span class="flex h-10 w-10 items-center justify-center rounded-full bg-brass text-midnight">
+                  <i class="fa-solid fa-envelope text-sm"></i>
+                </span>
+                <span>
+                  <span class="block text-xs font-bold uppercase tracking-[0.16em] text-asphalt/60">Email</span>
+                  <span class="block text-sm font-semibold text-midnight sm:text-base">Mrokes.handyman@gmail.com</span>
+                </span>
+              </span>
+            </a>
           </div>
         </div>
 
@@ -984,16 +1344,34 @@
     </div>
   </footer>
 
-  <!-- ===== FLOATING WHATSAPP ===== -->
+  <!-- ===== FLOATING WHATSAPP (desktop only — hidden on mobile, bottom bar covers it) ===== -->
   <a href="https://wa.me/17137028944?text=Hi%20Mrokes%20Handyman%2C%20I%20need%20help%20with%20a%20repair%20in%20Houston."
     target="_blank" rel="noreferrer"
-    class="fixed bottom-20 right-4 z-[60] flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-3xl text-white shadow-[0_4px_14px_rgba(37,211,102,0.4)] transition-all hover:-translate-y-1 hover:scale-105 hover:shadow-[0_6px_20px_rgba(37,211,102,0.6)] md:bottom-6 md:right-6 md:h-16 md:w-16 md:text-4xl"
+    class="hidden md:flex fixed bottom-6 right-6 z-[60] h-16 w-16 items-center justify-center rounded-full bg-[#25D366] text-4xl text-white shadow-[0_4px_14px_rgba(37,211,102,0.4)] transition-all hover:-translate-y-1 hover:scale-105 hover:shadow-[0_6px_20px_rgba(37,211,102,0.6)]"
     aria-label="Chat on WhatsApp">
     <i class="fa-brands fa-whatsapp"></i>
   </a>
 
   <script>
     document.addEventListener("DOMContentLoaded", function () {
+      // Hamburger toggle
+      const navToggle = document.getElementById('nav-toggle');
+      const mobileNav = document.getElementById('mobile-nav');
+      if (navToggle && mobileNav) {
+        navToggle.addEventListener('click', function () {
+          const expanded = navToggle.getAttribute('aria-expanded') === 'true';
+          navToggle.setAttribute('aria-expanded', String(!expanded));
+          mobileNav.classList.toggle('open', !expanded);
+        });
+        // Close menu when a nav link is clicked
+        mobileNav.querySelectorAll('a').forEach(function (link) {
+          link.addEventListener('click', function () {
+            navToggle.setAttribute('aria-expanded', 'false');
+            mobileNav.classList.remove('open');
+          });
+        });
+      }
+
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) entry.target.classList.add('show');
@@ -1029,7 +1407,59 @@
           link.classList.add("is-active");
         });
       });
+
+      // ===== CAROUSEL DOTS =====
+      const carousel = document.getElementById('services-carousel');
+      const dots = document.querySelectorAll('#carousel-dots .carousel-dot');
+      const swipeHint = carousel ? carousel.nextElementSibling : null;
+
+      function updateDots() {
+        if (!carousel || !dots.length) return;
+        const cards = carousel.querySelectorAll('article');
+        if (!cards.length) return;
+        // Find which card is most visible
+        const scrollLeft = carousel.scrollLeft;
+        const width = carousel.offsetWidth;
+        let closest = 0, minDist = Infinity;
+        cards.forEach(function (card, i) {
+          const dist = Math.abs(card.offsetLeft - scrollLeft - width * 0.1);
+          if (dist < minDist) { minDist = dist; closest = i; }
+        });
+        dots.forEach(function (dot, i) {
+          const active = i === closest;
+          dot.classList.toggle('bg-workred', active);
+          dot.classList.toggle('w-5', active);
+          dot.classList.toggle('bg-midnight/20', !active);
+          dot.classList.toggle('w-2', !active);
+          dot.classList.toggle('h-2.5', active);
+          dot.classList.toggle('h-2', !active);
+        });
+        // Hide swipe hint once user has scrolled past card 0
+        if (swipeHint && closest > 0) swipeHint.style.opacity = '0';
+      }
+
+      if (carousel) {
+        carousel.addEventListener('scroll', updateDots, { passive: true });
+        updateDots(); // init
+      }
     });
+
+    // ===== TOGGLE EXTRA SERVICES =====
+    function toggleServices() {
+      var extra = document.getElementById('extra-services');
+      var label = document.getElementById('services-toggle-label');
+      var icon = document.getElementById('services-toggle-icon');
+      var isOpen = !extra.classList.contains('hidden');
+      if (isOpen) {
+        extra.classList.add('hidden');
+        label.textContent = 'See 9 More Services';
+        icon.className = 'fa-solid fa-plus text-workred';
+      } else {
+        extra.classList.remove('hidden');
+        label.textContent = 'Show Less';
+        icon.className = 'fa-solid fa-minus text-workred';
+      }
+    }
   </script>
 </body>
 

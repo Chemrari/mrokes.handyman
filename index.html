@@ -15,14 +15,29 @@
     content="Professional handyman service for Houston homes and rental properties. Fast response, clear scheduling, and dependable repair support." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="images/job_car.jpeg" />
+  <meta name="theme-color" content="#13212b" />
+  <meta property="og:url" content="https://chemrari.github.io/mrokes.handyman/" />
   <link rel="icon" href="images/logo.jpg" type="image/jpeg" />
   <link rel="canonical" href="https://chemrari.github.io/mrokes.handyman/" />
+  <!-- DNS prefetch for external resources -->
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+  <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+  <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com" />
+  <!-- Preconnect for fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <!-- Preload LCP image -->
+  <link rel="preload" as="image" href="images/job_car.jpeg" fetchpriority="high" />
+  <!-- Fonts -->
   <link
     href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Oswald:wght@500;600;700&display=swap"
     rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  <!-- Font Awesome — loaded async to avoid render blocking -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" media="print"
+    onload="this.media='all'" />
+  <noscript>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  </noscript>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -376,7 +391,8 @@
       <!-- Logo row -->
       <div class="flex items-center justify-between">
         <a href="#top" class="flex items-center gap-2.5 sm:gap-3">
-          <img loading="lazy" src="images/logo.jpg" alt="Mrokes Handyman logo"
+          <img src="images/logo.jpg" alt="Mrokes Handyman logo" loading="eager" decoding="sync" fetchpriority="high"
+            width="56" height="56"
             class="h-10 w-10 shrink-0 rounded-[0.9rem] object-cover sm:h-14 sm:w-14 sm:rounded-[1.1rem]" />
           <div>
             <p class="font-display text-[1.1rem] font-semibold uppercase leading-none text-midnight sm:text-2xl">Mrokes
@@ -466,8 +482,8 @@
             class="dark-card hero-grid relative overflow-hidden rounded-[1.9rem] p-3.5 shadow-panel sm:rounded-[2.5rem] sm:p-6">
             <div class="relative grid gap-4">
               <div class="image-frame rounded-[1.5rem] sm:rounded-[2rem]">
-                <img loading="lazy" src="images/job_car.jpeg" alt="Mrokes Handyman service van in Houston TX"
-                  class="h-[16rem] w-full object-cover sm:h-[31rem]" />
+                <img src="images/job_car.jpeg" alt="Mrokes Handyman service van in Houston TX" fetchpriority="high"
+                  decoding="sync" class="h-[16rem] w-full object-cover sm:h-[31rem]" />
                 <div class="absolute inset-0 bg-gradient-to-t from-midnight/90 via-midnight/15 to-transparent"></div>
                 <div
                   class="absolute left-4 top-4 rounded-full bg-white px-3 py-2 text-[11px] font-bold uppercase tracking-[0.22em] text-midnight shadow-sm">
@@ -541,8 +557,8 @@
           <article
             class="panel-lift section-card w-[85%] max-w-[320px] shrink-0 snap-start overflow-hidden rounded-[2rem] p-3 sm:p-4 md:w-auto md:max-w-none md:shrink md:snap-align-none">
             <div class="relative overflow-hidden rounded-[1.5rem]">
-              <img loading="lazy" src="images/general-repairs.avif" alt="General home repair service"
-                class="h-48 w-full object-cover sm:h-52" />
+              <img loading="lazy" decoding="async" src="images/general-repairs.avif" alt="General home repair service"
+                width="320" height="208" class="h-48 w-full object-cover sm:h-52" />
               <div class="absolute inset-0 bg-gradient-to-t from-midnight/80 via-midnight/15 to-transparent"></div>
               <div
                 class="absolute left-4 top-4 flex h-14 w-14 items-center justify-center rounded-[1.1rem] bg-midnight text-2xl text-white shadow-lift">
@@ -563,8 +579,8 @@
           <article
             class="panel-lift w-[85%] max-w-[320px] shrink-0 snap-start overflow-hidden rounded-[2rem] border border-workred/20 bg-workred p-3 text-white shadow-panel sm:p-4 md:w-auto md:max-w-none md:shrink md:snap-align-none">
             <div class="relative overflow-hidden rounded-[1.5rem]">
-              <img loading="lazy" src="images/patch-paint.avif" alt="Patch and paint service"
-                class="h-48 w-full object-cover sm:h-52" />
+              <img loading="lazy" decoding="async" src="images/patch-paint.avif" alt="Patch and paint service"
+                width="320" height="208" class="h-48 w-full object-cover sm:h-52" />
               <div class="absolute inset-0 bg-gradient-to-t from-workred/85 via-workred/20 to-transparent"></div>
               <div
                 class="absolute left-4 top-4 flex h-14 w-14 items-center justify-center rounded-[1.1rem] bg-white/15 text-2xl text-white shadow-lift backdrop-blur">
@@ -585,8 +601,8 @@
           <article
             class="panel-lift section-card w-[85%] max-w-[320px] shrink-0 snap-start overflow-hidden rounded-[2rem] p-3 sm:p-4 md:w-auto md:max-w-none md:shrink md:snap-align-none">
             <div class="relative overflow-hidden rounded-[1.5rem]">
-              <img loading="lazy" src="images/minor-plumbing.jpg" alt="Minor plumbing repair service"
-                class="h-48 w-full object-cover sm:h-52" />
+              <img loading="lazy" decoding="async" src="images/minor-plumbing.jpg" alt="Minor plumbing repair service"
+                width="320" height="208" class="h-48 w-full object-cover sm:h-52" />
               <div class="absolute inset-0 bg-gradient-to-t from-midnight/80 via-midnight/15 to-transparent"></div>
               <div
                 class="absolute left-4 top-4 flex h-14 w-14 items-center justify-center rounded-[1.1rem] bg-brass text-2xl text-midnight shadow-lift">
@@ -607,7 +623,8 @@
           <article
             class="panel-lift w-[85%] max-w-[320px] shrink-0 snap-start overflow-hidden rounded-[2rem] border border-midnight/10 bg-mist p-3 shadow-panel sm:p-4 md:w-auto md:max-w-none md:shrink md:snap-align-none">
             <div class="relative overflow-hidden rounded-[1.5rem]">
-              <img loading="lazy" src="images/rental_upkeep.jpg" alt="Rental upkeep and maintenance service"
+              <img loading="lazy" decoding="async" src="images/rental_upkeep.jpg"
+                alt="Rental upkeep and maintenance service" width="320" height="208"
                 class="h-48 w-full object-cover sm:h-52" />
               <div class="absolute inset-0 bg-gradient-to-t from-pine/85 via-pine/15 to-transparent"></div>
               <div
@@ -1014,16 +1031,16 @@
             <div class="grid grid-cols-2 gap-1 p-2">
               <!-- Before Image -->
               <div class="relative overflow-hidden rounded-l-[1.8rem]">
-                <img loading="lazy" src="images/before.jpeg" alt="Repair in progress"
-                  class="aspect-[4/5] w-full object-cover sm:aspect-square" />
+                <img loading="lazy" decoding="async" src="images/before.jpeg" alt="Repair in progress" width="400"
+                  height="400" class="aspect-[4/5] w-full object-cover sm:aspect-square" />
                 <div
                   class="absolute bottom-3 left-3 rounded-full bg-black/60 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-white backdrop-blur">
                   Before</div>
               </div>
               <!-- After Image (Placeholder or Actual) -->
               <div class="relative overflow-hidden rounded-r-[1.8rem]">
-                <img loading="lazy" src="images/after.jpeg" alt="Finished repair"
-                  class="aspect-[4/5] w-full object-cover sm:aspect-square" />
+                <img loading="lazy" decoding="async" src="images/after.jpeg" alt="Finished repair" width="400"
+                  height="400" class="aspect-[4/5] w-full object-cover sm:aspect-square" />
                 <div
                   class="absolute bottom-3 right-3 rounded-full bg-workred px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-white backdrop-blur">
                   After</div>
@@ -1042,15 +1059,15 @@
           <article class="overflow-hidden rounded-[2.5rem] border border-midnight/10 bg-white shadow-panel">
             <div class="grid grid-cols-2 gap-1 p-2">
               <div class="relative overflow-hidden rounded-l-[1.8rem]">
-                <img loading="lazy" src="images/before2.jpeg" alt="Damaged area"
-                  class="aspect-[4/5] w-full object-cover sm:aspect-square" />
+                <img loading="lazy" decoding="async" src="images/before2.jpeg" alt="Damaged area" width="400"
+                  height="400" class="aspect-[4/5] w-full object-cover sm:aspect-square" />
                 <div
                   class="absolute bottom-3 left-3 rounded-full bg-black/60 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-white backdrop-blur">
                   Before</div>
               </div>
               <div class="relative overflow-hidden rounded-r-[1.8rem]">
-                <img loading="lazy" src="images/after2.jpeg" alt="Clean finish"
-                  class="aspect-[4/5] w-full object-cover sm:aspect-square" />
+                <img loading="lazy" decoding="async" src="images/after2.jpeg" alt="Clean finish" width="400"
+                  height="400" class="aspect-[4/5] w-full object-cover sm:aspect-square" />
                 <div
                   class="absolute bottom-3 right-3 rounded-full bg-workred px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-white backdrop-blur">
                   After</div>

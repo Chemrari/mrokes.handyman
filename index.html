@@ -97,6 +97,29 @@
       #services .grid>div.group i.text-sm {
         font-size: 0.875rem !important;
       }
+      #services .grid > div.group i.text-sm {
+        font-size: 0.875rem !important;
+      }
+    }
+
+    /* Premium Button Shimmer */
+    @keyframes shimmer {
+      0% { transform: translateX(-150%) skewX(-20deg); }
+      100% { transform: translateX(250%) skewX(-20deg); }
+    }
+    .btn-shimmer {
+      position: relative;
+      overflow: hidden;
+    }
+    .btn-shimmer::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 50%;
+      height: 100%;
+      background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.4), transparent);
+      animation: shimmer 4s infinite cubic-bezier(0.19, 1, 0.22, 1);
     }
 
     :root {
@@ -469,7 +492,10 @@
         <div>
           <div
             class="reveal inline-flex items-center gap-2 rounded-full border border-workred/20 bg-white px-4 py-2 text-[11px] font-bold uppercase tracking-[0.22em] text-workred sm:text-xs sm:tracking-[0.3em]">
-            <span class="h-2.5 w-2.5 rounded-full bg-workred"></span>
+            <span class="relative flex h-2.5 w-2.5">
+              <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-workred opacity-75"></span>
+              <span class="relative inline-flex h-2.5 w-2.5 rounded-full bg-workred"></span>
+            </span>
             Houston Handyman Support
           </div>
 
@@ -485,7 +511,7 @@
 
           <div class="reveal delay-3 mt-7 flex flex-col gap-3 sm:flex-row">
             <a href="tel:+17137028944"
-              class="inline-flex w-full items-center justify-center rounded-full bg-workred px-6 py-4 text-sm font-bold uppercase tracking-[0.08em] text-white shadow-lift transition hover:-translate-y-1 hover:bg-[#a74027] sm:w-auto sm:px-7 sm:text-base">
+              class="btn-shimmer inline-flex w-full items-center justify-center rounded-full bg-workred px-6 py-4 text-sm font-bold uppercase tracking-[0.08em] text-white shadow-lift transition hover:-translate-y-1 hover:bg-[#a74027] sm:w-auto sm:px-7 sm:text-base">
               <i class="fa-solid fa-phone mr-2"></i>Call for Service
             </a>
             <a href="https://wa.me/17137028944?text=Hi%20Mrokes%20Handyman%2C%20I%20need%20a%20quote%20for%20a%20repair%20in%20Houston."

@@ -28,43 +28,23 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <!-- Preload LCP image -->
   <link rel="preload" as="image" href="images/job_car.webp" fetchpriority="high" />
-  <!-- Fonts -->
+  <!-- Local Tailwind build — eliminates 760ms CDN render block -->
+  <link rel="stylesheet" href="output.css" />
+  <!-- Fonts — loaded async to avoid render blocking (~750ms saved) -->
   <link
     href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Oswald:wght@500;600;700&display=swap"
-    rel="stylesheet" />
+    rel="stylesheet" media="print" onload="this.media='all'" />
+  <noscript>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Oswald:wght@500;600;700&display=swap"
+      rel="stylesheet" />
+  </noscript>
   <!-- Font Awesome — loaded async to avoid render blocking -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" media="print"
     onload="this.media='all'" />
   <noscript>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
   </noscript>
-  <link rel="preload" href="https://cdn.tailwindcss.com/3.4.17" as="script" />
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            midnight: "#13212b",
-            asphalt: "#1f303d",
-            workred: "#be4b2f",
-            brass: "#d7a14a",
-            canvas: "#f4efe6",
-            pine: "#5e6f57",
-            mist: "#dde4df"
-          },
-          boxShadow: {
-            panel: "0 20px 55px rgba(19, 33, 43, 0.14)",
-            lift: "0 18px 35px rgba(19, 33, 43, 0.18)"
-          },
-          backgroundImage: {
-            grain: "radial-gradient(rgba(255,255,255,0.12) 1px, transparent 1px)",
-            gridline: "linear-gradient(rgba(19,33,43,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(19,33,43,0.08) 1px, transparent 1px)"
-          }
-        }
-      }
-    };
-  </script>
   <style>
     /* Optimize the Complete List service cards for 2-column mobile layout */
     @media (max-width: 639px) {
@@ -551,8 +531,10 @@
             class="dark-card hero-grid relative overflow-hidden rounded-[1.9rem] p-3.5 shadow-panel sm:rounded-[2.5rem] sm:p-6">
             <div class="relative grid gap-4">
               <div class="image-frame rounded-[1.5rem] sm:rounded-[2rem]">
-                <img src="images/job_car.webp" srcset="images/job_car.webp 1159w"
+                <img src="images/job_car.webp"
+                  srcset="images/job_car.webp 1159w, images/job_car.webp 654w"
                   sizes="(max-width: 640px) 100vw, 654px" fetchpriority="high" decoding="sync"
+                  width="654" height="448"
                   class="h-[16rem] w-full object-cover sm:h-[31rem]" alt="Mrokes Handyman service van in Houston TX">
                 <div class="absolute inset-0 bg-gradient-to-t from-midnight/90 via-midnight/15 to-transparent"></div>
                 <div
@@ -649,8 +631,9 @@
           <article
             class="panel-lift w-[85%] max-w-[320px] shrink-0 snap-start overflow-hidden rounded-[2rem] border border-workred/20 bg-workred p-3 text-white shadow-panel sm:p-4 md:w-auto md:max-w-none md:shrink md:snap-align-none">
             <div class="relative overflow-hidden rounded-[1.5rem]">
-              <img loading="lazy" decoding="async" src="images/patch-paint.webp" srcset="images/patch-paint.webp 900w"
-                sizes="(max-width: 640px) 100vw, 515px" alt="Patch and paint service" width="320" height="208"
+              <img loading="lazy" decoding="async" src="images/patch-paint.webp"
+                srcset="images/patch-paint.webp 900w, images/patch-paint.webp 515w"
+                sizes="(max-width: 640px) 100vw, 515px" alt="Patch and paint service" width="515" height="374"
                 class="h-48 w-full object-cover sm:h-52" />
               <div class="absolute inset-0 bg-gradient-to-t from-workred/85 via-workred/20 to-transparent"></div>
               <div
@@ -673,8 +656,9 @@
             class="panel-lift section-card w-[85%] max-w-[320px] shrink-0 snap-start overflow-hidden rounded-[2rem] p-3 sm:p-4 md:w-auto md:max-w-none md:shrink md:snap-align-none">
             <div class="relative overflow-hidden rounded-[1.5rem]">
               <img loading="lazy" decoding="async" src="images/minor-plumbing.webp"
-                srcset="images/minor-plumbing.webp 900w" sizes="(max-width: 640px) 100vw, 515px"
-                alt="Minor plumbing repair service" width="320" height="208" class="h-48 w-full object-cover sm:h-52" />
+                srcset="images/minor-plumbing.webp 900w, images/minor-plumbing.webp 515w"
+                sizes="(max-width: 640px) 100vw, 515px"
+                alt="Minor plumbing repair service" width="515" height="678" class="h-48 w-full object-cover sm:h-52" />
               <div class="absolute inset-0 bg-gradient-to-t from-midnight/80 via-midnight/15 to-transparent"></div>
               <div
                 class="absolute left-4 top-4 flex h-14 w-14 items-center justify-center rounded-[1.1rem] bg-brass text-2xl text-midnight shadow-lift">
@@ -696,7 +680,8 @@
             class="panel-lift w-[85%] max-w-[320px] shrink-0 snap-start overflow-hidden rounded-[2rem] border border-midnight/10 bg-mist p-3 shadow-panel sm:p-4 md:w-auto md:max-w-none md:shrink md:snap-align-none">
             <div class="relative overflow-hidden rounded-[1.5rem]">
               <img loading="lazy" decoding="async" src="images/rental_upkeep.webp"
-                srcset="images/rental_upkeep.webp 900w" sizes="(max-width: 640px) 100vw, 515px" width="320" height="208"
+                srcset="images/rental_upkeep.webp 900w, images/rental_upkeep.webp 515w"
+                sizes="(max-width: 640px) 100vw, 515px" width="515" height="772"
                 class="h-48 w-full object-cover sm:h-52" alt="Rental upkeep and maintenance service">
               <div class="absolute inset-0 bg-gradient-to-t from-pine/85 via-pine/15 to-transparent"></div>
               <div
@@ -1477,14 +1462,19 @@
       const navLinks = Array.from(document.querySelectorAll("[data-nav-link]"));
       const sections = navLinks.map(link => document.querySelector(link.getAttribute("href"))).filter(Boolean);
 
+      // Cache navDock height to avoid forced layout reflow on every scroll event
+      let navDockHeight = navDock.offsetHeight;
+      // Cache section offsets — read once, update only on resize
+      let sectionOffsets = sections.map(s => s.offsetTop);
+
       function updateDockState() {
         navDock.classList.toggle("is-scrolled", window.scrollY > 24);
       }
 
       function updateActiveLink() {
-        const offset = window.scrollY + navDock.offsetHeight + 50;
+        const offset = window.scrollY + navDockHeight + 50;
         let currentId = "";
-        sections.forEach(section => { if (section.offsetTop <= offset) currentId = section.id; });
+        sections.forEach((section, i) => { if (sectionOffsets[i] <= offset) currentId = section.id; });
         navLinks.forEach(link => {
           link.classList.toggle("is-active", currentId && link.getAttribute("href") === "#" + currentId);
         });
@@ -1493,7 +1483,12 @@
       function handleScroll() { updateDockState(); updateActiveLink(); }
       handleScroll();
       window.addEventListener("scroll", handleScroll, { passive: true });
-      window.addEventListener("resize", updateActiveLink);
+      window.addEventListener("resize", () => {
+        // Re-measure only on resize (infrequent)
+        navDockHeight = navDock.offsetHeight;
+        sectionOffsets = sections.map(s => s.offsetTop);
+        updateActiveLink();
+      });
 
       navLinks.forEach(link => {
         link.addEventListener("click", function () {

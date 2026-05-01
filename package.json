@@ -4,6 +4,8 @@
   "description": "A premium, fast, and fully responsive landing page built for a handyman service based in Houston, Texas. The project focuses on high conversion rates, professional aesthetics, and a seamless mobile experience.",
   "main": "index.js",
   "scripts": {
+    "build": "tailwindcss -i ./input.css -o ./output.css --minify",
+    "watch": "tailwindcss -i ./input.css -o ./output.css --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -19,6 +21,7 @@
   },
   "homepage": "https://github.com/Chemrari/mrokes.handyman#readme",
   "devDependencies": {
-    "tailwindcss": "^4.2.4"
+    "autoprefixer": "^10.5.0",
+    "tailwindcss": "^3.4.19"
   }
 }

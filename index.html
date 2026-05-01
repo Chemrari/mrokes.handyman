@@ -1568,10 +1568,10 @@
           if (msgBox) {
             msgBox.value = "Hi! I need help with " + serviceName + ". When are you available?";
 
-            // Scroll down
-            var contactSection = document.getElementById('contact');
-            if (contactSection) {
-              contactSection.scrollIntoView({ behavior: 'smooth' });
+            // Scroll down directly to the form
+            var contactForm = document.getElementById('contact-form');
+            if (contactForm) {
+              contactForm.scrollIntoView({ behavior: 'smooth', block: 'center' });
 
               // Focus the textarea so the user sees they can type
               setTimeout(function () {

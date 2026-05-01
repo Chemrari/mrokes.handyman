@@ -14,7 +14,7 @@
   <meta property="og:description"
     content="Professional handyman service for Houston homes and rental properties. Fast response, clear scheduling, and dependable repair support." />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="images/job_car.jpeg" />
+  <meta property="og:image" content="images/mrokes.png" />
   <meta name="theme-color" content="#13212b" />
   <meta property="og:url" content="https://chemrari.github.io/mrokes.handyman/" />
   <link rel="icon" href="images/logo.jpg" type="image/jpeg" />
@@ -65,6 +65,35 @@
     };
   </script>
   <style>
+    /* Optimize the Complete List service cards for 2-column mobile layout */
+    @media (max-width: 639px) {
+      #services .grid > div.group {
+        flex-direction: column !important;
+        justify-content: center !important;
+        text-align: center !important;
+        padding: 0.75rem 0.5rem !important;
+        gap: 0.5rem !important;
+      }
+      #services .grid > div.group > div.flex {
+        flex-direction: column !important;
+        gap: 0.5rem !important;
+      }
+      #services .grid > div.group > i.fa-chevron-right {
+        display: none !important;
+      }
+      #services .grid > div.group span.text-sm.font-medium {
+        font-size: 0.75rem !important;
+        line-height: 1.1 !important;
+      }
+      #services .grid > div.group span.h-10.w-10 {
+        height: 2.25rem !important;
+        width: 2.25rem !important;
+      }
+      #services .grid > div.group i.text-sm {
+        font-size: 0.875rem !important;
+      }
+    }
+
     :root {
       color-scheme: light;
     }
@@ -1229,6 +1258,10 @@
             </div>
           </div>
           <form id="contact-form" action="https://formspree.io/f/xojyzbbv" method="POST" class="mt-8 space-y-5">
+            <!-- Formspree Spam Honeypot -->
+            <div class="hidden" aria-hidden="true">
+              <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" />
+            </div>
             <div>
               <label for="name"
                 class="mb-2 block text-sm font-bold uppercase tracking-[0.2em] text-white/70">Name</label>
@@ -1520,13 +1553,13 @@
       var status = document.getElementById("form-status");
 
       if (form) {
-        form.addEventListener("submit", function(e) {
+        form.addEventListener("submit", function (e) {
           e.preventDefault();
-          
+
           var data = new FormData(form);
           var submitBtn = form.querySelector('button[type="submit"]');
           var originalBtnText = submitBtn.innerHTML;
-          
+
           // Disable button and show loading state
           submitBtn.disabled = true;
           submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin mr-2"></i>Sending...';

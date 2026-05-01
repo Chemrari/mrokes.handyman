@@ -38,6 +38,7 @@
   <noscript>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
   </noscript>
+  <link rel="preload" href="https://cdn.tailwindcss.com/3.4.17" as="script" />
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -97,20 +98,28 @@
       #services .grid>div.group i.text-sm {
         font-size: 0.875rem !important;
       }
-      #services .grid > div.group i.text-sm {
+
+      #services .grid>div.group i.text-sm {
         font-size: 0.875rem !important;
       }
     }
 
     /* Premium Button Shimmer */
     @keyframes shimmer {
-      0% { transform: translateX(-150%) skewX(-20deg); }
-      100% { transform: translateX(250%) skewX(-20deg); }
+      0% {
+        transform: translateX(-150%) skewX(-20deg);
+      }
+
+      100% {
+        transform: translateX(250%) skewX(-20deg);
+      }
     }
+
     .btn-shimmer {
       position: relative;
       overflow: hidden;
     }
+
     .btn-shimmer::after {
       content: '';
       position: absolute;
@@ -542,8 +551,9 @@
             class="dark-card hero-grid relative overflow-hidden rounded-[1.9rem] p-3.5 shadow-panel sm:rounded-[2.5rem] sm:p-6">
             <div class="relative grid gap-4">
               <div class="image-frame rounded-[1.5rem] sm:rounded-[2rem]">
-                <img src="images/job_car.webp" alt="Mrokes Handyman service van in Houston TX" fetchpriority="high"
-                  decoding="sync" class="h-[16rem] w-full object-cover sm:h-[31rem]" />
+                <img src="images/job_car.webp" srcset="images/job_car.webp 1159w"
+                  sizes="(max-width: 640px) 100vw, 654px" fetchpriority="high" decoding="sync"
+                  class="h-[16rem] w-full object-cover sm:h-[31rem]" alt="Mrokes Handyman service van in Houston TX">
                 <div class="absolute inset-0 bg-gradient-to-t from-midnight/90 via-midnight/15 to-transparent"></div>
                 <div
                   class="absolute left-4 top-4 rounded-full bg-white px-3 py-2 text-[11px] font-bold uppercase tracking-[0.22em] text-midnight shadow-sm">
@@ -639,8 +649,9 @@
           <article
             class="panel-lift w-[85%] max-w-[320px] shrink-0 snap-start overflow-hidden rounded-[2rem] border border-workred/20 bg-workred p-3 text-white shadow-panel sm:p-4 md:w-auto md:max-w-none md:shrink md:snap-align-none">
             <div class="relative overflow-hidden rounded-[1.5rem]">
-              <img loading="lazy" decoding="async" src="images/patch-paint.webp" alt="Patch and paint service"
-                width="320" height="208" class="h-48 w-full object-cover sm:h-52" />
+              <img loading="lazy" decoding="async" src="images/patch-paint.webp" srcset="images/patch-paint.webp 900w"
+                sizes="(max-width: 640px) 100vw, 515px" alt="Patch and paint service" width="320" height="208"
+                class="h-48 w-full object-cover sm:h-52" />
               <div class="absolute inset-0 bg-gradient-to-t from-workred/85 via-workred/20 to-transparent"></div>
               <div
                 class="absolute left-4 top-4 flex h-14 w-14 items-center justify-center rounded-[1.1rem] bg-white/15 text-2xl text-white shadow-lift backdrop-blur">
@@ -661,8 +672,9 @@
           <article
             class="panel-lift section-card w-[85%] max-w-[320px] shrink-0 snap-start overflow-hidden rounded-[2rem] p-3 sm:p-4 md:w-auto md:max-w-none md:shrink md:snap-align-none">
             <div class="relative overflow-hidden rounded-[1.5rem]">
-              <img loading="lazy" decoding="async" src="images/minor-plumbing.webp" alt="Minor plumbing repair service"
-                width="320" height="208" class="h-48 w-full object-cover sm:h-52" />
+              <img loading="lazy" decoding="async" src="images/minor-plumbing.webp"
+                srcset="images/minor-plumbing.webp 900w" sizes="(max-width: 640px) 100vw, 515px"
+                alt="Minor plumbing repair service" width="320" height="208" class="h-48 w-full object-cover sm:h-52" />
               <div class="absolute inset-0 bg-gradient-to-t from-midnight/80 via-midnight/15 to-transparent"></div>
               <div
                 class="absolute left-4 top-4 flex h-14 w-14 items-center justify-center rounded-[1.1rem] bg-brass text-2xl text-midnight shadow-lift">
@@ -684,8 +696,8 @@
             class="panel-lift w-[85%] max-w-[320px] shrink-0 snap-start overflow-hidden rounded-[2rem] border border-midnight/10 bg-mist p-3 shadow-panel sm:p-4 md:w-auto md:max-w-none md:shrink md:snap-align-none">
             <div class="relative overflow-hidden rounded-[1.5rem]">
               <img loading="lazy" decoding="async" src="images/rental_upkeep.webp"
-                alt="Rental upkeep and maintenance service" width="320" height="208"
-                class="h-48 w-full object-cover sm:h-52" />
+                srcset="images/rental_upkeep.webp 900w" sizes="(max-width: 640px) 100vw, 515px" width="320" height="208"
+                class="h-48 w-full object-cover sm:h-52" alt="Rental upkeep and maintenance service">
               <div class="absolute inset-0 bg-gradient-to-t from-pine/85 via-pine/15 to-transparent"></div>
               <div
                 class="absolute left-4 top-4 flex h-14 w-14 items-center justify-center rounded-[1.1rem] bg-pine text-2xl text-white shadow-lift">

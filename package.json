@@ -1,0 +1,24 @@
+{
+  "name": "mrokes.handyman",
+  "version": "1.0.0",
+  "description": "A premium, fast, and fully responsive landing page built for a handyman service based in Houston, Texas. The project focuses on high conversion rates, professional aesthetics, and a seamless mobile experience.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Chemrari/mrokes.handyman.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Chemrari/mrokes.handyman/issues"
+  },
+  "homepage": "https://github.com/Chemrari/mrokes.handyman#readme",
+  "devDependencies": {
+    "tailwindcss": "^4.2.4"
+  }
+}
